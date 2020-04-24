@@ -6,6 +6,7 @@ public class Timeline
 {
 	private ArrayList<Photo> t = new ArrayList<Photo>();
 
+	
 	public void addPhoto(String photoName)
 	{
 		Photo p = DatabaseMethods.getPhoto(photoName);

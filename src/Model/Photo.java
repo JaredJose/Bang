@@ -3,7 +3,7 @@ package Model;
 public class Photo
 {
 	private String name;
-	private String path;  //Change to fileName once we get db?
+	private String path;  //Change to fileName once we get db? 
 	private String description;
 
 	public Photo(String n, String p, String d)
