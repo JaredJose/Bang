@@ -1,7 +1,9 @@
+package Model;
+
 public class Photo
 {
 	private String name;
-	private String path;
+	private String path;  //Change to fileName once we get db?
 	private String description;
 
 	public Photo(String n, String p, String d)
@@ -9,6 +11,10 @@ public class Photo
 		this.name = n;
 		this.path = p;
 		this.description = d;
+	}
+	
+	public Photo()
+	{
 	}
 
 	public String getName()

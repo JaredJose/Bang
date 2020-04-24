@@ -1,9 +1,11 @@
+package Model;
+
 public class User
 {
 	private String username;
 	private String password;
 
-	public User(String uname, string passwd)
+	public User(String uname, String passwd)
 	{
 		this.username = uname;
 		this.password = passwd;

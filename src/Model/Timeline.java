@@ -1,3 +1,5 @@
+package Model;
+
 import java.util.*;
 
 public class Timeline
@@ -6,20 +8,20 @@ public class Timeline
 
 	public void addPhoto(String photoName)
 	{
-		Photo p = //need code to fetch photo from database
+		Photo p = DatabaseMethods.getPhoto(photoName);
 		t.add(p);
 	}
 
 	public void removePhoto(String photoName)
 	{
-		//also need code to remove photo drom database
-		
-		for(int i : t)
+		for(Photo i : t)
 		{
-			if((photo.getName()).equals(photoName))
+			if((i.getName()).equals(photoName))
 			{
 				t.remove(i);
 			}
 		}
+		
+		DatabaseMethods.removePhoto(photoName);
 	}
 }
