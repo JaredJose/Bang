@@ -14,6 +14,11 @@ public class Memory {
 		caption = capt;
 	}
 	
+	public Memory(LocalDate time, String capt) {
+		this.time = time;
+		caption = capt;
+	}
+	
 	public LocalDate getTime() {
 		return time;
 	}
@@ -24,5 +29,10 @@ public class Memory {
 	
 	public String getCaption() {
 		return caption;
+	}
+	
+	@Override
+	public String toString() {
+		return "[Date: " + time + " Caption: " + caption + "]";
 	}
 }

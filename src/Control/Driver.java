@@ -1,5 +1,6 @@
 package Control;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import Model.Memory;
@@ -14,5 +15,19 @@ public class Driver {
 	
 	public ArrayList<Memory> getList(){
 		return MemoryList;
+	}
+	
+	public static void main(String[] args) {
+		Driver testRun = new Driver();
+		LocalDate today = LocalDate.now();
+		Memory mem1 = new Memory(today, "today"); 
+		Memory mem2 = new Memory(today.minusDays(1), "yesterday"); 
+		Memory mem3 = new Memory(today.plusDays(1), "tomorrow"); 
+		
+	    testRun.addMemory(mem3);
+	    testRun.addMemory(mem2);
+	    testRun.addMemory(mem1);
+	    
+	    System.out.println(testRun.MemoryList);
 	}
 }

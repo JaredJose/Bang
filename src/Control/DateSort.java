@@ -7,6 +7,6 @@ import Model.Memory;
 public class DateSort implements Comparator<Memory>{
 	@Override
 	public int compare(Memory one, Memory two) {
-		return two.getTime().compareTo(one.getTime());
+		return one.getTime().compareTo(two.getTime());
 	}
 }
