@@ -13,4 +13,8 @@ public class Memory {
 		this.time = time;
 		caption = capt;
 	}
+	
+	public LocalDate getTime() {
+		return time;
+	}
 }
