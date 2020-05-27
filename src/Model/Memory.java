@@ -17,4 +17,12 @@ public class Memory {
 	public LocalDate getTime() {
 		return time;
 	}
+	
+	public File getPhoto() {
+		return pt;
+	}
+	
+	public String getCaption() {
+		return caption;
+	}
 }
