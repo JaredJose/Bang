@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import Model.Memory;
 
 public class Driver {
-	ArrayList<Memory> MemoryList = new ArrayList<Memory>();
+	 static ArrayList<Memory> MemoryList = new ArrayList<>();
 	
 	public void addMemory(Memory mem) {
 		MemoryList.add(mem); //adding a memory to the list
 		MemoryList.sort(new DateSort()); //automatically sorts the list everytime a memory is added
 	}
 	
-	public ArrayList<Memory> getList(){
+	public static ArrayList<Memory> getList(){
 		return MemoryList;
 	}
 	

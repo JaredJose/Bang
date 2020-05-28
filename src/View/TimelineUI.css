@@ -1,0 +1,19 @@
+.hbox{
+    -fx-background-color: #4FC3F7;
+}
+
+.root{
+    -fx-background-color: #4FC3F7;
+}
+
+.stack-pane{
+    -fx-background-color: #B0BEC5;
+}
+
+.label{
+    -fx-text-fill: #78909C;
+}
+
+.scene{
+    -fx-background-color: #4FC3F7;
+}
