@@ -35,7 +35,7 @@ public class Driver {
 	    login begin = new login();
 	    userID = begin.loginDB();
 	    
-	    memoryDatabase db = new memoryDatabase(userID); //constructor we count number of memories
+	    memoryDatabaseMethods db = new memoryDatabaseMethods(userID); //constructor we count number of memories
 	    
 	    while(db.count) {
 	    	addMemory(db.getMemory());
