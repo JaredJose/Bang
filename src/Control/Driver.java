@@ -7,6 +7,7 @@ import Model.Memory;
 
 public class Driver {
 	 static ArrayList<Memory> MemoryList = new ArrayList<>();
+	 private int userID;
 	
 	public void addMemory(Memory mem) {
 		MemoryList.add(mem); //adding a memory to the list
@@ -18,6 +19,7 @@ public class Driver {
 	}
 	
 	public static void main(String[] args) {
+		/*
 		Driver testRun = new Driver();
 		LocalDate today = LocalDate.now();
 		Memory mem1 = new Memory(today, "today"); 
@@ -29,5 +31,17 @@ public class Driver {
 	    testRun.addMemory(mem1);
 	    
 	    System.out.println(testRun.MemoryList);
+	    */
+	    login begin = new login();
+	    userID = begin.loginDB();
+	    
+	    memoryDatabase db = new memoryDatabase(userID); //constructor we count number of memories
+	    
+	    while(db.count) {
+	    	addMemory(db.getMemory());
+	    }
+	    
+	    TimelineUI view = ew TimelineUI(MemoryList);
+	    view.reveal();
 	}
 }
