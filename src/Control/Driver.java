@@ -19,7 +19,7 @@ public class Driver {
 	}
 	
 	public static void main(String[] args) {
-		/*
+		
 		Driver testRun = new Driver();
 		LocalDate today = LocalDate.now();
 		Memory mem1 = new Memory(today, "today"); 
@@ -31,7 +31,8 @@ public class Driver {
 	    testRun.addMemory(mem1);
 	    
 	    System.out.println(testRun.MemoryList);
-	    */
+	    
+		/*
 	    login begin = new login();
 	    userID = begin.loginDB();
 	    
@@ -43,5 +44,6 @@ public class Driver {
 	    
 	    TimelineUI view = ew TimelineUI(MemoryList);
 	    view.reveal();
+	    */
 	}
 }

@@ -12,20 +12,24 @@ public class memoryDatabaseMethods {
 	
 	public memoryDatabaseMethods(int userID) {
 		this.userID = userID;
-		//connect and query Photos section of db
-		//build list using buildMem()
+	}
+	
+	public ArrayList<Memory> queryDB() {
+		//connect to the database
+		//select based off of the userID field
+		//will call buildMem() for each returned row
+		return memList; //return the built list to Driver
 	}
 	
 	private void buildMem() {
 		Memory tempMem;
 		
 		//Fill tempMem with row's information
+		//pull File from s3 Instance
+		//convert Time string into TimeDate using TimeDate.parse
+		//store caption String
 		
-		memList.add(tempMem);
-		memList.sort(new DateSort());
-	}
-	
-	public ArrayList<Memory> getList(){
-		return memList;
+		memList.add(tempMem); //add to the arraylist
+		memList.sort(new DateSort()); //sort the arraylist from TimeDate field
 	}
 }
