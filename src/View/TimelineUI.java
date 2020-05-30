@@ -17,6 +17,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
@@ -47,11 +48,13 @@ public class TimelineUI extends Application {
         primaryStage.setTitle("Timeline");
 
 
-        HBox hbox = new HBox(20);
+        HBox hbox = new HBox();
         hbox.getStyleClass().add("hbox");
 
         Button backBtn = new Button("Back to Home");
         hbox.getChildren().add(backBtn);
+
+
 
         /*
         for(Memory m : memories)
@@ -67,8 +70,11 @@ public class TimelineUI extends Application {
 
         for(int i = 0; i < 20; i++) {
             VBox memory = createDummyMem();
-            HBox.setMargin(memory, new Insets(200, 50, 400, 50));
+            HBox.setMargin(memory, new Insets(200, 0, 400, 0));
+            Line hline = createLine();
+            HBox.setMargin(hline, new Insets(400, 0, 400, 0));
             hbox.getChildren().add(memory);
+            hbox.getChildren().add(hline);
         }
 
         ScrollPane layout = new ScrollPane();
@@ -124,5 +130,11 @@ public class TimelineUI extends Application {
 
 
         return vBox;
+    }
+
+    public Line createLine()
+    {
+        Line line = new Line(0, 200, 300, 200);
+        return(line);
     }
 }
