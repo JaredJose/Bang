@@ -30,7 +30,8 @@ public class loginControl {
 
         user = new User(username,password);
 
-        //Add any other code that might be done when the user press login
+        //Check if user exists in the database and the password is correct
+        //if that is true, then in the driver class, we will create a new TimelineUI object to start the program.
     }
 
     private boolean userConfirm()
