@@ -3,6 +3,7 @@ package View;
 import Model.Memory;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -12,12 +13,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
@@ -47,14 +46,37 @@ public class TimelineUI extends Application {
         memories = Control.Driver.getList();
         primaryStage.setTitle("Timeline");
 
-
         HBox hbox = new HBox();
         hbox.getStyleClass().add("hbox");
+        hbox.setPrefSize(1200,800);
+
+        VBox btnArea = new VBox();
 
         Button backBtn = new Button("Back to Home");
-        hbox.getChildren().add(backBtn);
+        btnArea.getChildren().add(backBtn);
+
+        Button addBtn = new Button("+");
+        btnArea.getChildren().add(addBtn);
+        addBtn.setOnAction((final ActionEvent e) -> {
+            imageSrc = openFile(primaryStage);
+            if (imageSrc != null) {
+
+                Image userUpload = new Image(imageSrc.toURI().toString());
+                ImageView imageFrame = new ImageView(userUpload);
+
+                VBox memory = createDummyMem(imageFrame);
+                HBox.setMargin(memory, new Insets(200, 0, 400, 0));
+
+                Line hline = createLine();
+                HBox.setMargin(hline, new Insets(400, 0, 400, 0));
+
+                hbox.getChildren().add(memory);
+                hbox.getChildren().add(hline);
+            }
+        });
 
 
+        hbox.getChildren().add(btnArea);
 
         /*
         for(Memory m : memories)
@@ -67,15 +89,6 @@ public class TimelineUI extends Application {
             hbox.getChildren().add(memory);
         }
          */
-
-        for(int i = 0; i < 20; i++) {
-            VBox memory = createDummyMem();
-            HBox.setMargin(memory, new Insets(200, 0, 400, 0));
-            Line hline = createLine();
-            HBox.setMargin(hline, new Insets(400, 0, 400, 0));
-            hbox.getChildren().add(memory);
-            hbox.getChildren().add(hline);
-        }
 
         ScrollPane layout = new ScrollPane();
         layout.setPrefSize(1200, 800);
@@ -108,13 +121,15 @@ public class TimelineUI extends Application {
         return vBox;
     }
 
-    public VBox createDummyMem()
+    public VBox createDummyMem(ImageView image)
     {
         VBox vBox = new VBox(20);
+
         Label cap = new Label("BRUH!!!!!!!");
+
         Label date = new Label("2020-5-27");
-        Image image = new Image("/View/bruh.jpeg");
-        ImageView imageview = new ImageView(image); //Don't exactly know how file is going to work, so i just put imageSrc.toString();
+
+        ImageView imageview = image; //Don't exactly know how file is going to work, so i just put imageSrc.toString();
         imageview.setFitHeight(200.0);
         imageview.setFitWidth(200.0);
 
@@ -137,4 +152,12 @@ public class TimelineUI extends Application {
         Line line = new Line(0, 200, 300, 200);
         return(line);
     }
+
+    public File openFile(Stage primaryStage)
+    {
+        FileChooser fileChooser = new FileChooser();
+
+        return(fileChooser.showOpenDialog(primaryStage));
+    }
+
 }
