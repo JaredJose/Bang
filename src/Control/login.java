@@ -9,8 +9,11 @@ public class login {
 	
 	//Run Login UI (constructor)
 
+
 	public int loginDB() {
 		loginDatabaseMethods db = new loginDatabaseMethods();
 		return db.getUserID(user, pass);
 	}
+
+
 }

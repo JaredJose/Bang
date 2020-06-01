@@ -4,8 +4,12 @@ import Model.Memory;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,6 +27,7 @@ import javafx.util.Duration;
 
 
 import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -38,6 +43,10 @@ public class TimelineUI extends Application {
     public static void main(String[] args) {
         launch(args);
 
+    }
+
+    public void startProgram() throws Exception {
+        start(new Stage());
     }
 
     @Override
@@ -57,7 +66,21 @@ public class TimelineUI extends Application {
 
         Button addBtn = new Button("+");
         btnArea.getChildren().add(addBtn);
-        addBtn.setOnAction((final ActionEvent e) -> {
+        addBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    addPressed(event);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+
+
+
+            /* OG code in case I mess up
             imageSrc = openFile(primaryStage);
             if (imageSrc != null) {
 
@@ -73,7 +96,8 @@ public class TimelineUI extends Application {
                 hbox.getChildren().add(memory);
                 hbox.getChildren().add(hline);
             }
-        });
+
+             */
 
 
         hbox.getChildren().add(btnArea);
@@ -158,6 +182,17 @@ public class TimelineUI extends Application {
         FileChooser fileChooser = new FileChooser();
 
         return(fileChooser.showOpenDialog(primaryStage));
+    }
+
+    public void addPressed(ActionEvent event) throws IOException {
+        Parent UploadViewParent = FXMLLoader.load(getClass().getResource("/View/UploadUI.fxml"));
+        Scene UploadViewScene = new Scene(UploadViewParent);
+
+        //This line gets scene info
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+        window.setScene(UploadViewScene);
+        window.show();
     }
 
 }

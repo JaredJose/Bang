@@ -28,9 +28,6 @@ public class uploadControl {
     private TextField dateField;
 
     @FXML
-    private Button backTimeBtn;
-
-    @FXML
     void backToTimeline(ActionEvent event) {
         //Figure out how the project is going to start first before work on this
     }
