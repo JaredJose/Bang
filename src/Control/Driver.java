@@ -5,10 +5,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import Model.Memory;
+import Model.memoryDatabaseMethods;
+import View.TimelineUI;
 
 public class Driver {
 	 static ArrayList<Memory> MemoryList = new ArrayList<>();
-	 private int userID;
+	 private static int userID;
 	
 	public void addMemory(Memory mem) {
 		MemoryList.add(mem); //adding a memory to the list
@@ -20,36 +22,17 @@ public class Driver {
 	}
 	
 	public static void main(String[] args) {
-		
-		Driver testRun = new Driver();
-		LocalDate today = LocalDate.now();
-		Memory mem1 = new Memory(today, "today"); 
-		Memory mem2 = new Memory(today.minusDays(1), "yesterday"); 
-		Memory mem3 = new Memory(today.plusDays(1), "tomorrow"); 
-		
-	    testRun.addMemory(mem3);
-	    testRun.addMemory(mem2);
-	    testRun.addMemory(mem1);
-	    
-	    System.out.println(testRun.MemoryList);
-	    
-		/*
+		//User Log-In (get uID)
 	    login begin = new login();
-	    userID = begin.loginDB();
+	    userID = begin.getUserID();
 	    
+	    //Build MemoryList off of uID
 	    memoryDatabaseMethods db = new memoryDatabaseMethods(userID); //constructor we count number of memories
+	    MemoryList = db.queryDB();
 	    
-	    while(db.count) {
-	    	addMemory(db.getMemory());
-	    }
-	    
-	    TimelineUI view = ew TimelineUI(MemoryList);
+	    //@Andrei, however you want to deal with accepting the MemoryList
+	    //Display Memories on TimeLine
+	    TimelineUI view = new TimelineUI(MemoryList);
 	    view.reveal();
-	    */
-	}
-
-	public void getImageSrc(File imageSrc)
-	{
-
 	}
 }

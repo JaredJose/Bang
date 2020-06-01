@@ -15,6 +15,7 @@ public class memoryDatabaseMethods {
 		this.userID = userID;
 	}
 	
+	//@Ethan needs implementation
 	public ArrayList<Memory> queryDB() {
 		//connect to the database
 		//select based off of the userID field
@@ -22,6 +23,7 @@ public class memoryDatabaseMethods {
 		return memList; //return the built list to Driver
 	}
 	
+	//@Ethan needs implementation
 	private void buildMem() {
 		Memory tempMem;
 		
