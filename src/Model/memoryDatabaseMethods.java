@@ -1,5 +1,6 @@
 package Model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import Control.DateSort;
@@ -31,5 +32,9 @@ public class memoryDatabaseMethods {
 		
 		memList.add(tempMem); //add to the arraylist
 		memList.sort(new DateSort()); //sort the arraylist from TimeDate field
+	}
+	
+	private LocalDate stringToTimeDate(String str) {
+		return LocalDate.parse(str);
 	}
 }
