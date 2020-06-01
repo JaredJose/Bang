@@ -9,8 +9,13 @@ public class login {
 	
 	//Run Login UI (constructor)
 
-	public int loginDB() {
+	public int getUserID() {
 		loginDatabaseMethods db = new loginDatabaseMethods();
-		return db.getUserID(user, pass);
+		int uID = db.getUserId(user,pass);
+		if(uID == -1) {
+			//put "incorrect login credentials" message
+			//await user re-entering login
+		} else
+			return uID;
 	}
 }
