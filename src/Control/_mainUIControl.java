@@ -20,7 +20,7 @@ public class _mainUIControl extends Application {
         launch(args);
     }
 
-    private static void startProgram() throws IOException {
+    public static void startProgram() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(_mainUIControl.class.getResource("/View/LoginUI.fxml"));
         mainLayout = loader.load();

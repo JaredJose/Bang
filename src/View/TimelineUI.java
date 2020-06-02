@@ -1,5 +1,6 @@
 package View;
 
+import Control.Driver;
 import Model.Memory;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
@@ -39,7 +40,16 @@ public class TimelineUI extends Application {
     String caption;
     String date;
     File imageSrc;
+    HBox hbox = new HBox();
 
+
+    public TimelineUI(ArrayList<Memory> memoriesList)
+    {
+        for(Memory m: memoriesList)
+        {
+            memories.add(m);
+        }
+    }
     public static void main(String[] args) {
         launch(args);
 
@@ -52,10 +62,9 @@ public class TimelineUI extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        memories = Control.Driver.getList();
         primaryStage.setTitle("Timeline");
 
-        HBox hbox = new HBox();
+
         hbox.getStyleClass().add("hbox");
         hbox.setPrefSize(1200,800);
 
@@ -71,6 +80,9 @@ public class TimelineUI extends Application {
             public void handle(ActionEvent event) {
                 try {
                     addPressed(event);
+
+
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -102,17 +114,19 @@ public class TimelineUI extends Application {
 
         hbox.getChildren().add(btnArea);
 
-        /*
+        //This for loop will iterate throught each memory in memory and create a Memory UI Box for each one.
         for(Memory m : memories)
         {
-            caption = m.getCaption();
-            date = m.getTime().toString();
-            imageSrc = m.getPhoto();
-            Vbox memory = createMemory(m);
-            hbox.setMargin(memory,new Insets(200,50,400,50));
+            VBox memory = createMemory(m);
+            HBox.setMargin(memory,new Insets(200,50,400,50));
+
+            Line hline = createLine();
+            HBox.setMargin(hline, new Insets(400, 0, 400, 0));
+
             hbox.getChildren().add(memory);
+            hbox.getChildren().add(hline);
         }
-         */
+
 
         ScrollPane layout = new ScrollPane();
         layout.setPrefSize(1200, 800);
@@ -131,7 +145,7 @@ public class TimelineUI extends Application {
         VBox vBox = new VBox();
         Label cap = new Label(memory.getCaption());
         Label date = new Label(memory.getTime().toString());
-        ImageView image = new ImageView(memory.getPhoto().getPath()); //Don't exactly know how file is going to work, so i just put imageSrc.getName();
+        ImageView image = new ImageView(memory.getPhoto().toURI().toString());
 
         vBox.setStyle("-fx-border-color: #78909C");
         vBox.setPrefSize(250,400);
@@ -193,6 +207,43 @@ public class TimelineUI extends Application {
 
         window.setScene(UploadViewScene);
         window.show();
+
+        if(Driver.getIsUploadAdded()) {
+            updateTimeline();
+            Driver.setIsUploadAdded(false);
+        }
+
+
+
+    }
+
+    public void updateMemories()
+    {
+        memories.clear();
+        ArrayList<Memory> newMemories = Driver.getList();
+        for(Memory m: newMemories)
+        {
+            memories.add(m);
+        }
+    }
+
+    public void updateTimeline()
+    {
+        hbox.getChildren().clear();
+
+        updateMemories();
+
+        for(Memory m : memories)
+        {
+            VBox memory = createMemory(m);
+            HBox.setMargin(memory,new Insets(200,50,400,50));
+
+            Line hline = createLine();
+            HBox.setMargin(hline, new Insets(400, 0, 400, 0));
+
+            hbox.getChildren().add(memory);
+            hbox.getChildren().add(hline);
+        }
     }
 
 }

@@ -25,14 +25,14 @@ public class memoryDatabaseMethods {
 	
 	//@Ethan needs implementation
 	private void buildMem() {
-		Memory tempMem;
+		//Memory tempMem;
 		
 		//Fill tempMem with row's information
 		//pull File from s3 Instance
 		//convert Time string into TimeDate using TimeDate.parse
 		//store caption String
 		
-		memList.add(tempMem); //add to the arraylist
+		//memList.add(tempMem); //add to the arraylist
 		memList.sort(new DateSort()); //sort the arraylist from TimeDate field
 	}
 	

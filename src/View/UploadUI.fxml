@@ -8,26 +8,40 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #83B9EB;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.uploadControl">
    <children>
-      <Button fx:id="uploadButton" layoutX="179.0" layoutY="76.0" mnemonicParsing="false" onAction="#uploadPressed" prefHeight="169.0" prefWidth="243.0" text="Upload" AnchorPane.bottomAnchor="155.0" AnchorPane.leftAnchor="179.0" AnchorPane.rightAnchor="178.0" AnchorPane.topAnchor="76.0">
+      <Button fx:id="uploadButton" layoutX="14.0" layoutY="56.0" mnemonicParsing="false" onAction="#uploadPressed" prefHeight="179.0" prefWidth="413.0" text="Upload" AnchorPane.bottomAnchor="165.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="173.0" AnchorPane.topAnchor="56.0">
          <font>
             <Font name="Century Gothic Bold Italic" size="30.0" />
          </font>
       </Button>
-      <TextField fx:id="captionField" layoutX="179.0" layoutY="258.0" prefHeight="33.0" prefWidth="243.0" promptText="Caption Here" AnchorPane.bottomAnchor="109.0" AnchorPane.leftAnchor="179.0" AnchorPane.rightAnchor="178.0">
+      <TextField fx:id="captionField" layoutX="14.0" layoutY="250.0" prefHeight="43.0" prefWidth="576.0" promptText="Caption Here" AnchorPane.bottomAnchor="107.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="10.0">
          <font>
             <Font name="Century Gothic" size="11.0" />
          </font>
       </TextField>
-      <Label layoutX="184.0" layoutY="26.0" prefHeight="50.0" prefWidth="243.0" text="Upload Photos Here" textFill="WHITE" AnchorPane.leftAnchor="184.0" AnchorPane.rightAnchor="173.0" AnchorPane.topAnchor="26.0">
+      <Label layoutX="184.0" layoutY="6.0" prefHeight="50.0" prefWidth="243.0" text="Upload Photos Here" textFill="WHITE" AnchorPane.leftAnchor="184.0" AnchorPane.rightAnchor="173.0" AnchorPane.topAnchor="6.0">
          <font>
             <Font name="Century Gothic Bold" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="confirmButton" layoutX="274.0" layoutY="347.0" mnemonicParsing="false" onAction="#confirmPressed" text="Confirm" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="274.0" AnchorPane.rightAnchor="264.0">
+      <Button fx:id="confirmButton" layoutX="256.0" layoutY="327.0" mnemonicParsing="false" onAction="#confirmPressed" text="Confirm" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="256.0" AnchorPane.rightAnchor="282.0">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font>
       </Button>
-      <TextField fx:id="dateField" layoutX="179.0" layoutY="299.0" prefHeight="33.0" prefWidth="243.0" promptText="Date" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="179.0" AnchorPane.rightAnchor="178.0" />
+      <TextField fx:id="yearField" alignment="CENTER" layoutX="435.0" layoutY="56.0" prefHeight="50.0" prefWidth="155.0" promptText="YYYY" AnchorPane.bottomAnchor="294.0" AnchorPane.leftAnchor="435.0" AnchorPane.rightAnchor="10.0">
+         <font>
+            <Font size="11.0" />
+         </font></TextField>
+      <Label fx:id="validDate" alignment="CENTER" layoutX="441.0" layoutY="310.0" prefHeight="17.0" prefWidth="135.0" />
+      <TextField fx:id="monthField" alignment="CENTER" layoutX="435.0" layoutY="121.0" prefHeight="50.0" prefWidth="155.0" promptText="MM">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="dayField" alignment="CENTER" layoutX="435.0" layoutY="185.0" prefHeight="50.0" prefWidth="155.0" promptText="DD">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>

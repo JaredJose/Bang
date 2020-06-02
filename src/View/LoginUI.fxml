@@ -18,5 +18,6 @@
       <Button fx:id="loginButton" layoutX="260.0" layoutY="261.0" mnemonicParsing="false" onAction="#loginPressed" prefHeight="29.0" prefWidth="79.0" style="-fx-cursor: hand;" text="Log in" />
       <Label layoutX="185.0" layoutY="132.0" text="Username" textFill="WHITE" />
       <Label layoutX="187.0" layoutY="192.0" text="Password" textFill="WHITE" />
+      <Label fx:id="credentialLabel" alignment="CENTER" layoutX="213.0" layoutY="311.0" prefHeight="17.0" prefWidth="168.0" textAlignment="CENTER" />
    </children>
 </Pane>

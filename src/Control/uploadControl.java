@@ -4,6 +4,7 @@ import Model.Memory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -14,6 +15,7 @@ import java.time.LocalDate;
 public class uploadControl {
     File imageSrc;
     LocalDate date;
+    String caption;
 
     @FXML
     private Button uploadButton;
@@ -25,7 +27,16 @@ public class uploadControl {
     private Button confirmButton;
 
     @FXML
-    private TextField dateField;
+    private TextField yearField;
+
+    @FXML
+    private Label validDate;
+
+    @FXML
+    private TextField monthField;
+
+    @FXML
+    private TextField dayField;
 
     @FXML
     void backToTimeline(ActionEvent event) {
@@ -34,8 +45,14 @@ public class uploadControl {
 
     @FXML
     void confirmPressed(ActionEvent event) {
-        date = LocalDate.now();
+        int year = Integer.parseInt(yearField.getText());
+        int month = Integer.parseInt(monthField.getText());
+        int day = Integer.parseInt(dayField.getText());
+        date = LocalDate.of(year,month,day);
+        caption = captionField.getText();
         Memory newMem = new Memory(imageSrc,date,captionField.getText());
+        //Ethan's database method that lets me add a memory to a user.
+        Driver.setIsUploadAdded(true);
     }
 
     @FXML
@@ -44,7 +61,7 @@ public class uploadControl {
         Stage stage = new Stage();
         FileChooser fileChooser = new FileChooser();
 
-       imageSrc = fileChooser.showOpenDialog(stage);
+        imageSrc = fileChooser.showOpenDialog(stage);
     }
 
 
