@@ -60,7 +60,7 @@ public class loginControl {
             credentialLabel.setStyle("-fx-text-fill: #ff162c");
         } else {
             //If they are a valid user we will start the program
-
+        	Driver.setUID(uID);
             //First, Build MemoryList off of uID;
             memoryDatabaseMethods datab = new memoryDatabaseMethods(uID);
             MemoryList = datab.queryDB();

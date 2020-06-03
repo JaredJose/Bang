@@ -2,6 +2,7 @@ package View;
 
 import Control.Driver;
 import Model.Memory;
+import Model.memoryDatabaseMethods;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -232,7 +233,8 @@ public class TimelineUI extends Application {
     public void updateMemories()
     {
         memories.clear();
-        ArrayList<Memory> newMemories = Driver.getList();
+        memoryDatabaseMethods datab = new memoryDatabaseMethods(Driver.getUID());
+        ArrayList<Memory> newMemories = datab.queryDB();
         for(Memory m: newMemories)
         {
             memories.add(m);
