@@ -83,7 +83,7 @@ public class TimelineUI extends Application {
             public void handle(ActionEvent event) {
                 try {
                     addPressed(event);
-                    hbox.getChildren().clear();
+                    
 
 
 
@@ -244,9 +244,12 @@ public class TimelineUI extends Application {
 
     public void updateTimeline()
     {
-
+    	hbox.getChildren().clear();
+    	
         updateMemories();
 
+        
+        /*
         for(Memory m : memories)
         {
             VBox memory = createMemory(m);
@@ -258,6 +261,7 @@ public class TimelineUI extends Application {
             hbox.getChildren().add(memory);
             hbox.getChildren().add(hline);
         }
+        */
     }
 
 }
