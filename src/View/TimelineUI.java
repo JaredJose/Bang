@@ -41,6 +41,7 @@ public class TimelineUI extends Application {
     String date;
     File imageSrc;
     HBox hbox = new HBox();
+    Stage mainStage;
 
 
     public TimelineUI(ArrayList<Memory> memoriesList)
@@ -56,7 +57,8 @@ public class TimelineUI extends Application {
     }
 
     public void startProgram() throws Exception {
-        start(new Stage());
+    	mainStage = new Stage();
+        start(mainStage);
     }
 
     @Override
@@ -85,7 +87,10 @@ public class TimelineUI extends Application {
 
                 } catch (IOException e) {
                     e.printStackTrace();
-                }
+                } catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
@@ -200,18 +205,23 @@ public class TimelineUI extends Application {
         return(fileChooser.showOpenDialog(primaryStage));
     }
 
-    public void addPressed(ActionEvent event) throws IOException {
+    public void addPressed(ActionEvent event) throws Exception {
         Parent UploadViewParent = FXMLLoader.load(getClass().getResource("/View/UploadUI.fxml"));
         Scene UploadViewScene = new Scene(UploadViewParent);
 
         //This line gets scene info
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        //Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
-        window.setScene(UploadViewScene);
-        window.show();
+        //window.setScene(UploadViewScene);
+        //window.show();
+        
+        mainStage.hide();
+        mainStage.setScene(UploadViewScene);
+        mainStage.showAndWait();
 
         if(Driver.getIsUploadAdded()) {
             updateTimeline();
+            start(mainStage);
             Driver.setIsUploadAdded(false);
         }
 

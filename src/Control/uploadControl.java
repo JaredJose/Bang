@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -55,8 +56,9 @@ public class uploadControl {
         
         memoryDatabaseMethods.uploadMemory(newMem);
         
-        //Ethan's database method that lets me add a memory to a user.
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         Driver.setIsUploadAdded(true);
+        window.close();
     }
 
     @FXML
