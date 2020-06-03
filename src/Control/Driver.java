@@ -1,8 +1,13 @@
 package Control;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
 
 import Model.Memory;
 import Model.memoryDatabaseMethods;
@@ -72,5 +77,15 @@ public class Driver extends Application {
 	{
 		isUploadAdded = b;
 	}
-
+	
+	public static void ByteArrayToImage(String fileName, InputStream is ) throws IOException{ 
+        /*
+	     * Byte Array to Image
+         */
+	    	
+    	BufferedImage test = ImageIO.read(is);
+	    File file = new File(fileName);
+	    System.out.print("writing");
+	    ImageIO.write(test, "jpg", file);
+	  }
 }

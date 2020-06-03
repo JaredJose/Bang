@@ -6,7 +6,10 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
+
+import Model.memoryDatabaseMethods;
 
 import static javafx.application.Application.launch;
 
@@ -18,6 +21,11 @@ public class _mainUIControl extends Application {
     public static void main(String[] args)
     {
         launch(args);
+        for(File f:memoryDatabaseMethods.deleteAfter)
+        {
+        	if(f.delete())
+        		System.out.print("deleted");
+        }
     }
 
     public static void startProgram() throws IOException {

@@ -1,6 +1,7 @@
 package Control;
 
 import Model.Memory;
+import Model.memoryDatabaseMethods;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -51,6 +52,9 @@ public class uploadControl {
         date = LocalDate.of(year,month,day);
         caption = captionField.getText();
         Memory newMem = new Memory(imageSrc,date,captionField.getText());
+        
+        memoryDatabaseMethods.uploadMemory(newMem);
+        
         //Ethan's database method that lets me add a memory to a user.
         Driver.setIsUploadAdded(true);
     }

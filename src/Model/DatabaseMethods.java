@@ -17,6 +17,7 @@ public class DatabaseMethods {
 		
 		//Database communication
 		
+		
 	}
 	
 	public static void removePhoto(String photoName) {

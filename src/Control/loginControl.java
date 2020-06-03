@@ -16,7 +16,8 @@ import java.util.ArrayList;
 
 public class loginControl {
 
-    static String username, password;
+    public static String username;
+	public static String password;
     User user;
     static ArrayList<Memory> MemoryList = new ArrayList<>();
 
@@ -44,12 +45,14 @@ public class loginControl {
         if(!passwordField.getText().equals(""))
             password = passwordField.getText();
 
-
+        System.out.println("\n\n\n\nhereherhehrer\n\n\n\n\n");
         loginDatabaseMethods db = new loginDatabaseMethods();
         int uID = db.getUserID(username,password); //getUserID() returns the userId associated with login credentials
-        uID = 5; //For Now since db methods still need to be implemented ID is 5 just to test
-
-
+        //uID = 5; //For Now since db methods still need to be implemented ID is 5 just to test
+       
+       
+        System.out.println("UserID got");
+        
         //This is to check if user exists in database
         if(uID == -1) {
             //If they are not in the database UI will say invalid user

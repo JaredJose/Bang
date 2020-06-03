@@ -1,11 +1,18 @@
 package Model;
 
+import java.util.HashMap;
+import java.util.Iterator;
+
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import com.amazonaws.services.dynamodbv2.document.DynamoDB;
+import com.amazonaws.services.dynamodbv2.document.Item;
+import com.amazonaws.services.dynamodbv2.document.ItemCollection;
+import com.amazonaws.services.dynamodbv2.document.QueryOutcome;
 import com.amazonaws.services.dynamodbv2.document.Table;
+import com.amazonaws.services.dynamodbv2.document.spec.QuerySpec;
 
 public class loginDatabaseMethods {
 	//to work with Control login class
@@ -34,8 +41,48 @@ public class loginDatabaseMethods {
 
         DynamoDB dynamoDB = new DynamoDB(client);
 
-        Table table = dynamoDB.getTable("CovidSimData");
-		
-		return -1;
+        Table table = dynamoDB.getTable("Memories");
+
+        HashMap<String, String> nameMap = new HashMap<String, String>();
+        nameMap.put("#user", "User");
+        
+        
+        HashMap<String, Object> valueMap = new HashMap<String, Object>();
+        valueMap.put(":us", user);
+        
+        QuerySpec querySpec = new QuerySpec().withKeyConditionExpression("#user = :us").withNameMap(nameMap)
+                .withValueMap(valueMap);
+        
+
+        ItemCollection<QueryOutcome> items = null;
+        Iterator<Item> iterator = null;
+        Item item = null;
+        
+        valueMap.put(":us", user);
+        valueMap.put(":inf", "Info");
+        
+        querySpec
+        .withKeyConditionExpression("#user = :us and Specs = :inf").withNameMap(nameMap)
+        .withValueMap(valueMap);
+
+        try {
+            items = table.query(querySpec);
+
+            iterator = items.iterator();
+            while (iterator.hasNext()) {
+                item = iterator.next();
+            }
+
+        }
+        catch (Exception e) {
+            System.err.println("Unable to query Sim1 for Stats#b0");
+            System.err.println(e.getMessage());
+        }
+        
+        
+        if(item != null && item.get("password").equals(pass))
+        	return (int) item.getInt("UserID");
+        else
+        	return -1;
 	}
 }
