@@ -146,7 +146,9 @@ public class TimelineUI extends Application {
         Label cap = new Label(memory.getCaption());
         Label date = new Label(memory.getTime().toString());
         ImageView image = new ImageView(memory.getPhoto().toURI().toString());
-
+        image.setFitHeight(200.0);
+        image.setFitWidth(200.0);
+        
         vBox.setStyle("-fx-border-color: #78909C");
         vBox.setPrefSize(250,400);
         VBox.setMargin(cap,new Insets(20,20,20,20));
