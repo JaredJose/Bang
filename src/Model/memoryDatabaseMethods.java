@@ -173,7 +173,7 @@ public class memoryDatabaseMethods {
         //nameMap.put("#stats", "Stats"); //Only need this line when querying off partition and sort key
 
         HashMap<String, Object> valueMap = new HashMap<String, Object>();
-        valueMap.put(":id", "Jabba");
+        valueMap.put(":id", user);
         //valueMap.put(":Sts", "STATS#b3"); //Only need this line when querying off partition and sort key
 
         QuerySpec querySpec = new QuerySpec().withKeyConditionExpression("#sID = :id").withNameMap(nameMap)
